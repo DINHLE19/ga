@@ -2577,3 +2577,1078 @@
   </script>
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c69aacd479acdec',t:'MTc2OTg2NzMxMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+<!doctype doctype>
+<html lang="vi">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sinh Tồn Sinh Thái</title>
+  <script src="/_sdk/data_sdk.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Rajdhani:wght@300;500;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      height: 100%;
+      width: 100%;
+    }
+    
+    @keyframes breathe {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.05); }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 20px rgba(0, 245, 212, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(0, 245, 212, 0.8); }
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    @keyframes dataFlow {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-100%) rotate(360deg); opacity: 0; }
+    }
+    
+    @keyframes glitch {
+      0%, 100% { transform: translate(0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(2px, -2px); }
+      60% { transform: translate(-2px, -2px); }
+      80% { transform: translate(2px, 2px); }
+    }
+    
+    @keyframes neonGlow {
+      0%, 100% { 
+        text-shadow: 0 0 10px rgba(0, 245, 212, 0.5),
+                     0 0 20px rgba(0, 245, 212, 0.3),
+                     0 0 30px rgba(0, 187, 249, 0.2);
+      }
+      50% { 
+        text-shadow: 0 0 20px rgba(0, 245, 212, 0.8),
+                     0 0 40px rgba(0, 245, 212, 0.5),
+                     0 0 60px rgba(0, 187, 249, 0.4);
+      }
+    }
+    
+    body {
+      font-family: 'Rajdhani', sans-serif;
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1419 100%);
+      color: #e8f4f8;
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(0, 245, 212, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(123, 44, 191, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(0, 187, 249, 0.05) 0%, transparent 70%);
+      pointer-events: none;
+      animation: breathe 8s ease-in-out infinite;
+      z-index: 0;
+    }
+    
+    .main-wrapper {
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .app-container {
+      min-height: 100%;
+      padding: 2.5% 4%;
+      position: relative;
+    }
+    
+    .data-particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: rgba(0, 245, 212, 0.6);
+      border-radius: 50%;
+      animation: dataFlow 15s linear infinite;
+      box-shadow: 0 0 10px rgba(0, 245, 212, 0.8);
+    }
+    
+    .creature-glow {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(157, 78, 221, 0.3) 0%, transparent 70%);
+      pointer-events: none;
+      animation: float 6s ease-in-out infinite;
+      filter: blur(40px);
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 3%;
+      position: relative;
+    }
+    
+    .game-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3.5em;
+      font-weight: 900;
+      color: #00f5d4;
+      margin-bottom: 0.5%;
+      letter-spacing: 0.05em;
+      animation: neonGlow 3s ease-in-out infinite;
+      position: relative;
+    }
+    
+    .game-title::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      color: #00bbf9;
+      opacity: 0.3;
+      animation: glitch 5s infinite;
+      pointer-events: none;
+    }
+    
+    .subtitle {
+      font-size: 1.3em;
+      color: #9d4edd;
+      font-weight: 500;
+      opacity: 0.9;
+    }
+    
+    .stats-bar {
+      display: flex;
+      justify-content: space-around;
+      background: rgba(15, 20, 35, 0.7);
+      border: 2px solid #00f5d4;
+      border-radius: 15px;
+      padding: 2% 3%;
+      margin-bottom: 3%;
+      box-shadow: 0 0 25px rgba(0, 245, 212, 0.2);
+    }
+    
+    .stat-item {
+      text-align: center;
+    }
+    
+    .stat-label {
+      font-size: 0.9em;
+      color: #7b2cbf;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5%;
+    }
+    
+    .stat-value {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2em;
+      color: #00f5d4;
+      font-weight: 700;
+    }
+    
+    .layers-container {
+      display: grid;
+      gap: 2.5%;
+      margin-bottom: 3%;
+    }
+    
+    .layer-card {
+      background: linear-gradient(135deg, rgba(0, 187, 249, 0.1) 0%, rgba(123, 44, 191, 0.1) 100%);
+      border: 2px solid;
+      border-radius: 20px;
+      padding: 3%;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .layer-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, transparent 0%, rgba(0, 245, 212, 0.05) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .layer-card:hover::before {
+      opacity: 1;
+    }
+    
+    .layer-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 40px rgba(0, 245, 212, 0.3);
+    }
+    
+    .layer-card.locked {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    
+    .layer-card.locked:hover {
+      transform: none;
+      box-shadow: none;
+    }
+    
+    .layer-card.active {
+      border-color: #00f5d4;
+      box-shadow: 0 0 30px rgba(0, 245, 212, 0.4);
+    }
+    
+    .layer-card.completed {
+      border-color: #7b2cbf;
+      background: linear-gradient(135deg, rgba(123, 44, 191, 0.2) 0%, rgba(0, 187, 249, 0.1) 100%);
+    }
+    
+    .layer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2%;
+    }
+    
+    .layer-number {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2em;
+      color: #00bbf9;
+      font-weight: 700;
+    }
+    
+    .layer-status {
+      font-size: 0.9em;
+      padding: 1% 3%;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+    
+    .layer-status.locked {
+      background: rgba(157, 78, 221, 0.2);
+      color: #9d4edd;
+    }
+    
+    .layer-status.active {
+      background: rgba(0, 245, 212, 0.2);
+      color: #00f5d4;
+    }
+    
+    .layer-status.completed {
+      background: rgba(123, 44, 191, 0.3);
+      color: #c77dff;
+    }
+    
+    .layer-name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8em;
+      color: #e8f4f8;
+      margin-bottom: 1.5%;
+      font-weight: 700;
+    }
+    
+    .layer-description {
+      font-size: 1.1em;
+      color: #9d4edd;
+      margin-bottom: 2%;
+      line-height: 1.5;
+    }
+    
+    .layer-challenges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5%;
+      margin-bottom: 2.5%;
+    }
+    
+    .challenge-tag {
+      background: rgba(0, 187, 249, 0.2);
+      color: #00bbf9;
+      padding: 1.2% 2.5%;
+      border-radius: 8px;
+      font-size: 0.9em;
+      border: 1px solid rgba(0, 187, 249, 0.3);
+    }
+    
+    .progress-container {
+      margin-top: 2.5%;
+    }
+    
+    .progress-label {
+      font-size: 0.9em;
+      color: #7b2cbf;
+      margin-bottom: 1%;
+    }
+    
+    .progress-bar {
+      width: 100%;
+      height: 12px;
+      background: rgba(15, 20, 35, 0.5);
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(0, 245, 212, 0.3);
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #00f5d4 0%, #00bbf9 100%);
+      transition: width 0.5s ease;
+      box-shadow: 0 0 10px rgba(0, 245, 212, 0.5);
+    }
+    
+    .meta-progression {
+      background: linear-gradient(135deg, rgba(123, 44, 191, 0.2) 0%, rgba(15, 20, 35, 0.8) 100%);
+      border: 2px solid #7b2cbf;
+      border-radius: 20px;
+      padding: 3%;
+      margin-bottom: 3%;
+    }
+    
+    .meta-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8em;
+      color: #c77dff;
+      margin-bottom: 2%;
+      font-weight: 700;
+    }
+    
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2%;
+    }
+    
+    .meta-item {
+      background: rgba(0, 187, 249, 0.1);
+      border: 1px solid rgba(0, 187, 249, 0.3);
+      border-radius: 12px;
+      padding: 3%;
+      text-align: center;
+    }
+    
+    .meta-icon {
+      font-size: 2.5em;
+      margin-bottom: 2%;
+    }
+    
+    .meta-label {
+      font-size: 1em;
+      color: #00bbf9;
+      margin-bottom: 1%;
+      font-weight: 500;
+    }
+    
+    .meta-count {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8em;
+      color: #00f5d4;
+      font-weight: 700;
+    }
+    
+    .memory-system {
+      background: linear-gradient(135deg, rgba(157, 78, 221, 0.2) 0%, rgba(15, 20, 35, 0.8) 100%);
+      border: 2px solid #9d4edd;
+      border-radius: 20px;
+      padding: 3%;
+      margin-bottom: 3%;
+    }
+    
+    .memory-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.6em;
+      color: #9d4edd;
+      margin-bottom: 2%;
+      font-weight: 700;
+    }
+    
+    .memory-warning {
+      background: rgba(157, 78, 221, 0.2);
+      border-left: 4px solid #9d4edd;
+      padding: 2.5%;
+      border-radius: 8px;
+      font-size: 1.1em;
+      color: #e8f4f8;
+      line-height: 1.6;
+    }
+    
+    .actions-container {
+      display: flex;
+      gap: 2%;
+      flex-wrap: wrap;
+    }
+    
+    .action-btn {
+      flex: 1;
+      min-width: 180px;
+      padding: 3% 0;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1em;
+      font-weight: 700;
+      border: 2px solid;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    
+    .action-btn.primary {
+      background: linear-gradient(135deg, #00f5d4 0%, #00bbf9 100%);
+      border-color: #00f5d4;
+      color: #0a0e27;
+    }
+    
+    .action-btn.primary:hover {
+      box-shadow: 0 0 25px rgba(0, 245, 212, 0.5);
+      transform: translateY(-2px);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    
+    .action-btn.primary:active {
+      transform: translateY(0);
+      box-shadow: 0 0 15px rgba(0, 245, 212, 0.3);
+    }
+    
+    .action-btn.secondary {
+      background: transparent;
+      border-color: #7b2cbf;
+      color: #c77dff;
+    }
+    
+    .action-btn.secondary:hover {
+      background: rgba(123, 44, 191, 0.2);
+      box-shadow: 0 0 20px rgba(123, 44, 191, 0.3);
+    }
+    
+    .action-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+    
+    .history-list {
+      margin-top: 2%;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+    
+    .history-item {
+      background: rgba(0, 187, 249, 0.1);
+      border-left: 3px solid #00bbf9;
+      padding: 2%;
+      margin-bottom: 1.5%;
+      border-radius: 8px;
+      font-size: 0.95em;
+    }
+    
+    .history-time {
+      color: #7b2cbf;
+      font-size: 0.85em;
+    }
+    
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(10, 14, 39, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    
+    .loading-spinner {
+      width: 60px;
+      height: 60px;
+      border: 4px solid rgba(0, 245, 212, 0.2);
+      border-top-color: #00f5d4;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .hidden {
+      display: none;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="data-particles" id="dataParticles"></div>
+  <div class="main-wrapper">
+   <div class="app-container">
+    <div class="creature-glow" style="top: 10%; left: 15%; animation-delay: 0s;"></div>
+    <div class="creature-glow" style="top: 60%; right: 10%; animation-delay: 2s;"></div>
+    <div class="creature-glow" style="bottom: 20%; left: 40%; animation-delay: 4s;"></div>
+    <div class="header">
+     <h1 class="game-title" id="gameTitle" data-text="SINH TỒN SINH THÁI">SINH TỒN SINH THÁI</h1>
+     <p class="subtitle" id="subtitle">Hệ sinh thái nhớ mọi sai lầm của bạn</p>
+    </div>
+    <div class="stats-bar">
+     <div class="stat-item">
+      <div class="stat-label">
+       Run hiện tại
+      </div>
+      <div class="stat-value" id="currentRun">
+       1
+      </div>
+     </div>
+     <div class="stat-item">
+      <div class="stat-label">
+       Tầng
+      </div>
+      <div class="stat-value" id="currentLayer">
+       1
+      </div>
+     </div>
+     <div class="stat-item">
+      <div class="stat-label">
+       Tiến độ
+      </div>
+      <div class="stat-value" id="progressPercent">
+       0%
+      </div>
+     </div>
+    </div>
+    <div class="layers-container" id="layersContainer"></div>
+    <div class="meta-progression">
+     <h2 class="meta-title">META PROGRESSION</h2>
+     <div class="meta-grid">
+      <div class="meta-item">
+       <div class="meta-icon">
+        🧬
+       </div>
+       <div class="meta-label">
+        Gene Mở Khóa
+       </div>
+       <div class="meta-count" id="genesCount">
+        0
+       </div>
+      </div>
+      <div class="meta-item">
+       <div class="meta-icon">
+        🌍
+       </div>
+       <div class="meta-label">
+        Biome Khám Phá
+       </div>
+       <div class="meta-count" id="biomesCount">
+        0
+       </div>
+      </div>
+      <div class="meta-item">
+       <div class="meta-icon">
+        💀
+       </div>
+       <div class="meta-label">
+        Sai Lầm Ghi Nhận
+       </div>
+       <div class="meta-count" id="mistakesCount">
+        0
+       </div>
+      </div>
+      <div class="meta-item">
+       <div class="meta-icon">
+        🔄
+       </div>
+       <div class="meta-label">
+        Tổng Run
+       </div>
+       <div class="meta-count" id="totalRuns">
+        0
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="memory-system">
+     <h2 class="memory-title">⚠️ HỆ THỐNG KÝ ỨC</h2>
+     <div class="memory-warning">
+      Game nhớ mọi sai lầm bạn từng gây ra. Mỗi lần chết, sinh thái tiến hóa. Mỗi gen mở khóa, thế giới thay đổi. Ký ức từ run trước ảnh hưởng trực tiếp đến run sau. Bạn không chỉ đánh boss - bạn đánh một hệ sinh th��i nổi loạn đang học cách hủy diệt bạn.
+     </div>
+     <div class="history-list" id="historyList"></div>
+    </div>
+    <div class="actions-container"><button class="action-btn primary" id="startRunBtn">Bắt Đầu Run Mới</button> <button class="action-btn secondary" id="resetProgressBtn">Reset Tiến Trình</button>
+    </div>
+   </div>
+  </div>
+  <div class="loading-overlay hidden" id="loadingOverlay">
+   <div class="loading-spinner"></div>
+  </div>
+  <script>
+    const defaultConfig = {
+      game_title: "SINH TỒN SINH THÁI",
+      subtitle: "Hệ sinh thái nhớ mọi sai lầm của bạn",
+      layer1_name: "Tầng hoang sơ",
+      layer2_name: "Tầng săn mồi",
+      layer3_name: "Tầng đột biến",
+      layer4_name: "Tầng sụp đổ",
+      layer5_name: "Tầng tuyệt chủng",
+      background_color: "#0a0e27",
+      surface_color: "#1a1f3a",
+      text_color: "#e8f4f8",
+      primary_action_color: "#00f5d4",
+      secondary_action_color: "#7b2cbf"
+    };
+
+    const layerData = [
+      {
+        id: 1,
+        description: "Học cách sinh tồn trong môi trường hoang sơ",
+        challenges: ["Tìm th��c ăn", "Xây nơi trú ẩn", "Tránh nguy hiểm"]
+      },
+      {
+        id: 2,
+        description: "Bạn trở thành con mồi - hãy sống sót",
+        challenges: ["Bị săn đuổi", "Ẩn náu", "Phản đòn"]
+      },
+      {
+        id: 3,
+        description: "Sinh vật phá vỡ mọi quy luật tự nhiên",
+        challenges: ["Đột biến gen", "Thích nghi", "Tiến hóa ngược"]
+      },
+      {
+        id: 4,
+        description: "Môi trường tự hủy diệt - sống sót trong hỗn loạn",
+        challenges: ["Thảm họa thiên nhiên", "Sụp đổ hệ sinh thái", "Tài nguyên cạn kiệt"]
+      },
+      {
+        id: 5,
+        description: "Đối đầu với boss sinh thái - hệ thống nổi loạn",
+        challenges: ["Boss đa hình thái", "Hệ sinh thái vũ khí hóa", "Tuyệt chủng toàn diện"]
+      }
+    ];
+
+    let currentRunData = {
+      runNumber: 1,
+      currentLayer: 1,
+      genesUnlocked: 0,
+      biomesUnlocked: 0,
+      mistakesMade: 0,
+      totalRuns: 0
+    };
+
+    let allRuns = [];
+    let isLoading = false;
+
+    const dataHandler = {
+      onDataChanged(data) {
+        allRuns = data.sort((a, b) => b.run_number - a.run_number);
+        updateUIFromData();
+      }
+    };
+
+    async function initSDK() {
+      showLoading();
+      const result = await window.dataSdk.init(dataHandler);
+      hideLoading();
+      
+      if (!result.isOk) {
+        showInlineMessage("Không thể khởi tạo hệ thống lưu trữ", "error");
+      }
+    }
+
+    function updateUIFromData() {
+      if (allRuns.length === 0) {
+        renderInitialState();
+        return;
+      }
+
+      const lastRun = allRuns[0];
+      currentRunData = {
+        runNumber: lastRun.run_number,
+        currentLayer: lastRun.current_layer,
+        genesUnlocked: lastRun.unlocked_genes ? lastRun.unlocked_genes.split(',').length : 0,
+        biomesUnlocked: lastRun.unlocked_biomes ? lastRun.unlocked_biomes.split(',').length : 0,
+        mistakesMade: lastRun.mistakes_made ? lastRun.mistakes_made.split(',').length : 0,
+        totalRuns: allRuns.length
+      };
+
+      renderLayers();
+      updateStats();
+      renderHistory();
+    }
+
+    function renderInitialState() {
+      currentRunData = {
+        runNumber: 1,
+        currentLayer: 1,
+        genesUnlocked: 0,
+        biomesUnlocked: 0,
+        mistakesMade: 0,
+        totalRuns: 0
+      };
+      
+      renderLayers();
+      updateStats();
+      renderHistory();
+    }
+
+    function renderLayers() {
+      const container = document.getElementById('layersContainer');
+      container.innerHTML = '';
+
+      layerData.forEach((layer) => {
+        const isActive = layer.id === currentRunData.currentLayer;
+        const isCompleted = layer.id < currentRunData.currentLayer;
+        const isLocked = layer.id > currentRunData.currentLayer;
+
+        const layerName = getLayerName(layer.id);
+        
+        const card = document.createElement('div');
+        card.className = `layer-card ${isActive ? 'active' : ''} ${isCompleted ? 'completed' : ''} ${isLocked ? 'locked' : ''}`;
+        card.style.borderColor = isActive ? defaultConfig.primary_action_color : (isCompleted ? defaultConfig.secondary_action_color : 'rgba(0, 187, 249, 0.3)');
+        
+        if (!isLocked) {
+          card.addEventListener('click', () => selectLayer(layer.id));
+        }
+
+        const statusText = isCompleted ? 'Hoàn thành' : (isActive ? 'Đang chơi' : 'Khóa');
+        const statusClass = isCompleted ? 'completed' : (isActive ? 'active' : 'locked');
+
+        card.innerHTML = `
+          <div class="layer-header">
+            <span class="layer-number">TẦNG ${layer.id}</span>
+            <span class="layer-status ${statusClass}">${statusText}</span>
+          </div>
+          <h3 class="layer-name">${layerName}</h3>
+          <p class="layer-description">${layer.description}</p>
+          <div class="layer-challenges">
+            ${layer.challenges.map(challenge => `<span class="challenge-tag">${challenge}</span>`).join('')}
+          </div>
+          ${!isLocked ? `
+            <div class="progress-container">
+              <div class="progress-label">Tiến độ tầng</div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: ${isCompleted ? '100' : (isActive ? '35' : '0')}%"></div>
+              </div>
+            </div>
+          ` : ''}
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    function getLayerName(layerId) {
+      const configKey = `layer${layerId}_name`;
+      return window.elementSdk ? (window.elementSdk.config[configKey] || defaultConfig[configKey]) : defaultConfig[configKey];
+    }
+
+    function updateStats() {
+      document.getElementById('currentRun').textContent = currentRunData.runNumber;
+      document.getElementById('currentLayer').textContent = currentRunData.currentLayer;
+      document.getElementById('progressPercent').textContent = Math.round((currentRunData.currentLayer / 5) * 100) + '%';
+      document.getElementById('genesCount').textContent = currentRunData.genesUnlocked;
+      document.getElementById('biomesCount').textContent = currentRunData.biomesUnlocked;
+      document.getElementById('mistakesCount').textContent = currentRunData.mistakesMade;
+      document.getElementById('totalRuns').textContent = currentRunData.totalRuns;
+    }
+
+    function renderHistory() {
+      const historyList = document.getElementById('historyList');
+      
+      if (allRuns.length === 0) {
+        historyList.innerHTML = '<div class="history-item">Ch���a có lịch sử chơi. Bắt đầu run đầu tiên!</div>';
+        return;
+      }
+
+      historyList.innerHTML = allRuns.slice(0, 5).map(run => {
+        const date = new Date(run.timestamp);
+        return `
+          <div class="history-item">
+            <div>Run #${run.run_number} - Tầng ${run.current_layer}/5 ${run.completed ? '✅' : '⚠️'}</div>
+            <div class="history-time">${date.toLocaleDateString('vi-VN')} ${date.toLocaleTimeString('vi-VN')}</div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function selectLayer(layerId) {
+      if (layerId > currentRunData.currentLayer) return;
+      currentRunData.currentLayer = layerId;
+      renderLayers();
+      updateStats();
+    }
+
+    async function startNewRun() {
+      if (isLoading) return;
+      if (allRuns.length >= 999) {
+        showInlineMessage("Đã đạt giới hạn 999 run. Vui lòng reset tiến trình trước.", "error");
+        return;
+      }
+
+      showLoading();
+
+      const newRun = {
+        id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
+        run_number: currentRunData.totalRuns + 1,
+        current_layer: 1,
+        unlocked_genes: generateRandomGenes(),
+        unlocked_biomes: generateRandomBiomes(),
+        mistakes_made: generateRandomMistakes(),
+        timestamp: new Date().toISOString(),
+        completed: false
+      };
+
+      const result = await window.dataSdk.create(newRun);
+      hideLoading();
+
+      if (result.isOk) {
+        showInlineMessage("Run mới đã bắt đầu! Chúc may mắn!", "success");
+      } else {
+        showInlineMessage("Không thể bắt đầu run mới", "error");
+      }
+    }
+
+    function generateRandomGenes() {
+      const genes = ['Alpha', 'Beta', 'Gamma', 'Delta', 'Epsilon', 'Zeta'];
+      const count = Math.floor(Math.random() * 3) + 1;
+      return genes.sort(() => 0.5 - Math.random()).slice(0, count).join(',');
+    }
+
+    function generateRandomBiomes() {
+      const biomes = ['Rừng rậm', 'Sa mạc', 'Đại dương', 'Núi lửa', 'Băng nguyên'];
+      const count = Math.floor(Math.random() * 2) + 1;
+      return biomes.sort(() => 0.5 - Math.random()).slice(0, count).join(',');
+    }
+
+    function generateRandomMistakes() {
+      const mistakes = ['Tấn công sai', 'Lãng phí tài nguyên', 'Bỏ lỡ cơ hội', 'Chọn sai chiến thuật'];
+      const count = Math.floor(Math.random() * 3);
+      return mistakes.sort(() => 0.5 - Math.random()).slice(0, count).join(',');
+    }
+
+    async function resetProgress() {
+      if (isLoading) return;
+      
+      const confirmDiv = document.createElement('div');
+      confirmDiv.style.cssText = 'position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #1a1f3a; padding: 30px; border: 2px solid #00f5d4; border-radius: 15px; z-index: 2000; text-align: center; box-shadow: 0 0 30px rgba(0, 245, 212, 0.3);';
+      confirmDiv.innerHTML = `
+        <div style="font-family: 'Orbitron', sans-serif; font-size: 1.4em; margin-bottom: 20px; color: #00f5d4;">Xác nhận reset?</div>
+        <div style="margin-bottom: 25px; color: #e8f4f8;">Điều này sẽ xóa toàn bộ lịch sử run!</div>
+        <button id="confirmReset" style="background: #00f5d4; color: #0a0e27; padding: 12px 30px; margin: 0 10px; border: none; border-radius: 8px; cursor: pointer; font-family: 'Orbitron', sans-serif; font-weight: 700;">Xác nhận</button>
+        <button id="cancelReset" style="background: transparent; color: #c77dff; padding: 12px 30px; margin: 0 10px; border: 2px solid #7b2cbf; border-radius: 8px; cursor: pointer; font-family: 'Orbitron', sans-serif; font-weight: 700;">Hủy</button>
+      `;
+      document.body.appendChild(confirmDiv);
+
+      document.getElementById('confirmReset').addEventListener('click', async () => {
+        document.body.removeChild(confirmDiv);
+        showLoading();
+        
+        for (const run of allRuns) {
+          await window.dataSdk.delete(run);
+        }
+        
+        hideLoading();
+        showInlineMessage("Đã reset toàn bộ tiến trình", "success");
+      });
+
+      document.getElementById('cancelReset').addEventListener('click', () => {
+        document.body.removeChild(confirmDiv);
+      });
+    }
+
+    function showLoading() {
+      isLoading = true;
+      document.getElementById('loadingOverlay').classList.remove('hidden');
+      document.getElementById('startRunBtn').disabled = true;
+      document.getElementById('resetProgressBtn').disabled = true;
+    }
+
+    function hideLoading() {
+      isLoading = false;
+      document.getElementById('loadingOverlay').classList.add('hidden');
+      document.getElementById('startRunBtn').disabled = false;
+      document.getElementById('resetProgressBtn').disabled = false;
+    }
+
+    function showInlineMessage(message, type) {
+      const messageDiv = document.createElement('div');
+      messageDiv.style.cssText = `position: fixed; top: 20px; right: 20px; padding: 20px 30px; background: ${type === 'success' ? 'rgba(0, 245, 212, 0.2)' : 'rgba(157, 78, 221, 0.2)'}; border: 2px solid ${type === 'success' ? '#00f5d4' : '#9d4edd'}; border-radius: 12px; color: #e8f4f8; font-family: 'Rajdhani', sans-serif; font-size: 1.1em; z-index: 3000; box-shadow: 0 0 20px rgba(0, 245, 212, 0.3);`;
+      messageDiv.textContent = message;
+      document.body.appendChild(messageDiv);
+
+      setTimeout(() => {
+        document.body.removeChild(messageDiv);
+      }, 3000);
+    }
+
+    document.getElementById('startRunBtn').addEventListener('click', startNewRun);
+    document.getElementById('resetProgressBtn').addEventListener('click', resetProgress);
+
+    async function onConfigChange(config) {
+      const titleElement = document.getElementById('gameTitle');
+      const newTitle = config.game_title || defaultConfig.game_title;
+      titleElement.textContent = newTitle;
+      titleElement.setAttribute('data-text', newTitle);
+      
+      document.getElementById('subtitle').textContent = config.subtitle || defaultConfig.subtitle;
+      
+      const backgroundColor = config.background_color || defaultConfig.background_color;
+      const surfaceColor = config.surface_color || defaultConfig.surface_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const primaryActionColor = config.primary_action_color || defaultConfig.primary_action_color;
+      
+      document.body.style.background = `linear-gradient(135deg, ${backgroundColor} 0%, ${surfaceColor} 50%, ${backgroundColor} 100%)`;
+      document.documentElement.style.setProperty('--text-color', textColor);
+      
+      renderLayers();
+    }
+
+    function createDataParticles() {
+      const container = document.getElementById('dataParticles');
+      const particleCount = 50;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 15 + 's';
+        particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+        
+        const hue = Math.random() > 0.5 ? 174 : 268;
+        particle.style.background = `hsl(${hue}, 100%, ${Math.random() * 30 + 50}%)`;
+        particle.style.boxShadow = `0 0 10px hsl(${hue}, 100%, ${Math.random() * 30 + 50}%)`;
+        
+        container.appendChild(particle);
+      }
+    }
+
+    function addHeartbeatEffect() {
+      let lastTime = Date.now();
+      let stress = 0;
+      
+      setInterval(() => {
+        const now = Date.now();
+        const delta = now - lastTime;
+        
+        if (delta < 100) {
+          stress = Math.min(stress + 0.1, 1);
+        } else {
+          stress = Math.max(stress - 0.05, 0);
+        }
+        
+        const scale = 1 + (stress * 0.02);
+        document.body.style.transform = `scale(${scale})`;
+        
+        lastTime = now;
+      }, 50);
+    }
+
+    createDataParticles();
+    addHeartbeatEffect();
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (value) => {
+                if (window.elementSdk && window.elementSdk.config) {
+                  window.elementSdk.config.background_color = value;
+                  window.elementSdk.setConfig({ background_color: value });
+                }
+              }
+            },
+            {
+              get: () => config.surface_color || defaultConfig.surface_color,
+              set: (value) => {
+                if (window.elementSdk && window.elementSdk.config) {
+                  window.elementSdk.config.surface_color = value;
+                  window.elementSdk.setConfig({ surface_color: value });
+                }
+              }
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => {
+                if (window.elementSdk && window.elementSdk.config) {
+                  window.elementSdk.config.text_color = value;
+                  window.elementSdk.setConfig({ text_color: value });
+                }
+              }
+            },
+            {
+              get: () => config.primary_action_color || defaultConfig.primary_action_color,
+              set: (value) => {
+                if (window.elementSdk && window.elementSdk.config) {
+                  window.elementSdk.config.primary_action_color = value;
+                  window.elementSdk.setConfig({ primary_action_color: value });
+                }
+              }
+            },
+            {
+              get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+              set: (value) => {
+                if (window.elementSdk && window.elementSdk.config) {
+                  window.elementSdk.config.secondary_action_color = value;
+                  window.elementSdk.setConfig({ secondary_action_color: value });
+                }
+              }
+            }
+          ],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ["game_title", config.game_title || defaultConfig.game_title],
+          ["subtitle", config.subtitle || defaultConfig.subtitle],
+          ["layer1_name", config.layer1_name || defaultConfig.layer1_name],
+          ["layer2_name", config.layer2_name || defaultConfig.layer2_name],
+          ["layer3_name", config.layer3_name || defaultConfig.layer3_name],
+          ["layer4_name", config.layer4_name || defaultConfig.layer4_name],
+          ["layer5_name", config.layer5_name || defaultConfig.layer5_name]
+        ])
+      });
+    }
+
+    initSDK();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c69bee4c11dce6d',t:'MTc2OTg2ODEzNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
